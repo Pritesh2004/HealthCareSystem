@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 5px;
     width: 45%;
     height: 65vh;
     margin-top: 20px;
@@ -28,9 +28,10 @@
     flex-direction: column;
     align-items: center;
     width: 45%;
-    height: 65vh;
+    min-height: 70%;
+    max-height: 80%;
     border: 1px solid white;
-    border-radius: 15px;
+    border-radius: 5px;
     background-color: white;
 }
 
@@ -161,7 +162,6 @@ button:hover {
     }
     .update-card{
         width: 80%;
-        height: 64vh;
     }
     .account-logo {
         height: 120px;
@@ -172,6 +172,10 @@ button:hover {
 }
 
 @media (max-width: 500px) {
+    .content {
+        padding-top: 10vh;
+        height: 90vh;
+    }
     .profile-card {
         padding: 0 5%;
         height: 55vh;
@@ -181,7 +185,10 @@ button:hover {
         height: 100px;
     }
     .update-card{
-        height: 70vh;
+        width: 90%;
+        min-height: 80%;
+        max-height: 90%;
+
     }
     .input-row{
         width: 80%;
@@ -191,8 +198,7 @@ button:hover {
         align-items: center;
         gap: 2px;
     }
-    
-      
+  
       input , select{
         width: 100%;
         margin-top: 8px;

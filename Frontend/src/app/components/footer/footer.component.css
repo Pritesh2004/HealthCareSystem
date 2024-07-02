@@ -1,0 +1,162 @@
+footer{
+    margin: 0;
+}
+#bottom-nav {
+    background-color: #11141b;
+    height: 35vh;
+    border-top: solid 0.1px rgb(21, 32, 32);
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    align-items: flex-start;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;    
+}
+
+.footer-links{
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 75px;
+    margin-left: 11%;
+}
+
+.navbar-title {
+   
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* padding-left: 10%; */
+    cursor: pointer;
+  }
+  
+  #title1 {
+    margin-bottom: 0;
+    color: white;
+    font-size: 40px;
+  }
+  
+  #title2 {
+    margin-bottom: 0;
+    color: #009DFF;
+    font-size: 28px;
+    padding-top: 8px;
+    padding-left: 1px;
+  }
+  
+
+#icons-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.icons {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    background-color:#304656;
+
+
+}
+.icon {
+    margin-top: 7.5px;
+    font-size: 22px;
+}
+
+.footer-about{
+    margin-top: 75px;
+    margin-left: 90px;
+    width: 30%;
+}
+.footer-about p:nth-child(1){
+    font-size: 25px;
+    color: white;
+}
+
+.footer-about p:nth-child(2){
+    font-size: 15px;
+    color: rgb(206, 206, 206);
+}
+
+
+.linkedin:hover {
+    background-color: #0077b5;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.github:hover {
+    background-color: teal;
+    color: white;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.mail:hover {
+    background-color: #00bfff;
+    color: white;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 700px) {
+    
+    
+#bottom-nav {
+    height: 60vh;   
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: flex-start;  
+}
+
+.footer-links{
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 75px;
+    margin-left: 12%;
+}
+
+.footer-about{
+    margin-top: 50px;
+    width: 280px;
+    margin-left: 12%;
+}
+}
+
+@media screen and (max-width: 400px) {
+   
+    #bottom-nav {
+        height: 50vh;  
+    }
+    .footer-about{
+        margin-top: 35px;
+    }
+    #icons-div {
+    margin-top: 20px;
+    }
+      #title1 {
+        font-size: 33px;
+      }
+      
+      #title2 {
+        font-size: 24px;
+      }
+      .footer-about p:nth-child(1){
+        font-size: 22px;
+    }
+    
+    .footer-about p:nth-child(2){
+        font-size: 13px;
+    }
+}

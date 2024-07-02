@@ -12,7 +12,7 @@
     background-color: #fff;
     padding: 2rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 5px;
     width: 68%;
     max-height: 75%;
     max-width: 500px;
@@ -113,9 +113,15 @@
       height: 60%;
     }
   }
-
-  @media (max-width: 600px) {
-    .appointment-container {
-      padding: 2rem 1rem;
+  @media (max-width: 500px) {
+    .appointment-page {
+      height:88vh;
+      padding-top: 10vh;
     }
+    .appointment-container {
+      padding: 15px;
+      width: 82%;
+      max-height: 75%;
+    }
+    
   }

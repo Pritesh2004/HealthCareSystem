@@ -145,10 +145,11 @@
 
   .navlinks {
     top: 65px !important;
+    height: 30% !important;
   }
 
   #btn1{
-    width: 130px;
+    width: 150px;
     height: 36px;
     font-size: 13px;
   }

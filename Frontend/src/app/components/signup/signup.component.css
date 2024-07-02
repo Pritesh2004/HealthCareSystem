@@ -18,7 +18,7 @@
   max-height: 100%;
   width: 450px;
   border: 1px solid white;
-  border-radius: 15px;
+  border-radius: 5px;
   background-color: white;
 }
 
@@ -186,8 +186,12 @@ margin-left: 10px;
 }
 
 @media (max-width: 600px) {
+  .signup-page {
+    height:90vh;
+    padding-top: 8vh;
+  }
   .signup-container {
-    width: 75%;
-    min-height: 63%;
+    width: 90%;
+    min-height: 70%;
   }
 }

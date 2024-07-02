@@ -27,7 +27,6 @@ import { SignupComponent } from './components/signup/signup.component';
 import { UserDashboardComponent } from './components/normalUser/user-dashboard/user-dashboard.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { DoctorDashboardComponent } from './components/doctor/doctor-dashboard/doctor-dashboard.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { AddDoctorComponent } from './components/admin/add-doctor/add-doctor.component';
 import { AddSpecializationComponent } from './components/admin/add-specialization/add-specialization.component';
 import { DoctorAppointmentsComponent } from './components/doctor/doctor-appointments/doctor-appointments.component';
@@ -52,7 +51,6 @@ import { AboutComponent } from './components/about/about.component';
     UserDashboardComponent,
     AdminDashboardComponent,
     DoctorDashboardComponent,
-    ProfileComponent,
     AddDoctorComponent,
     AddSpecializationComponent,
     DoctorAppointmentsComponent,

@@ -105,6 +105,11 @@
 
   @media (max-width: 550px) {
 
+    #welcome
+{
+    height: 80vh;
+}
+
     #welcomeTitle{
         padding-top: 50%;
     }
