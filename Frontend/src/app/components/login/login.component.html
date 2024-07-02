@@ -1,0 +1,35 @@
+
+<!-- user-login.component.html -->
+<div class="login-page">
+    <div class="login-container">
+  
+      <h2 id="login">Login</h2>
+      <form #loginForm="ngForm" (submit)="loginUser()">
+        <div class="input-div">
+          <div class="input-divs">
+            <input type="text" id="email" [(ngModel)]="userRequest.email" #email="ngModel" name="email" required placeholder="Email">
+            <span *ngIf="email.invalid && email.touched" style="color: red;">
+              <span *ngIf="email.errors?.['required']">Email is required.</span>
+            </span>
+          </div>
+        
+          <div class="input-divs">
+            <input type="password" id="password" [(ngModel)]="userRequest.password" #password="ngModel" name="password" required placeholder="Password">
+            <span *ngIf="password.invalid && password.touched" style="color: red;">
+              <span *ngIf="password.errors?.['required']">Password is required.</span>
+            </span>
+          </div>
+        </div>
+        
+        <button [disabled]="loginForm.invalid" type="submit">Login</button>
+        <div id="signup-link-div">
+          <p id="signup-text">Not a member yet?</p>
+          <a id="signup-link" routerLink="/signup">Sign Up</a>
+        </div>
+      </form>
+      
+    </div>
+  </div>
+  
+  
+  <!-- <a href="{{url}}" >Sign in with Google</a> -->

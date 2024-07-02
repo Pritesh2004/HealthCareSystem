@@ -1,0 +1,18 @@
+<!-- user-details.component.html -->
+
+
+
+<div class="content">
+  <div *ngIf="admin " class="profile-card">
+    <div class="logo-container">
+      <img src="./../../../../assets/user_149071.png" alt="Account Logo" class="account-logo">
+    </div>
+    <p id="name">{{ admin.user.firstName }} {{ admin.user.lastName }}</p>
+    <p id="position">{{ admin.position }}</p>
+    <div class="div1">
+      <p><strong>Email - </strong>{{ admin.user.email }}</p>
+      <p><strong>Phone - </strong>{{ admin.user.phoneNumber }}</p>
+      <p><Strong>Gender - </Strong> {{ admin.gender }}</p>
+    </div>
+  </div>
+</div>

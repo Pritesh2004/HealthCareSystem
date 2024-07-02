@@ -1,0 +1,21 @@
+<!-- doctor-details.component.html -->
+
+  
+  
+<div class="content">
+  <div *ngIf="doctorSpec " class="profile-card">
+    <div class="logo-container">
+      <img src="./../../../../assets/user_149071.png" alt="Account Logo" class="account-logo">
+    </div>
+    <p id="name">{{ doctorSpec.doctor.user.firstName }} {{ doctorSpec.doctor.user.lastName }}</p>
+    <p id="specialization">{{ doctorSpec.specialization.specializationName }}</p>
+    <div class="div1">
+      <p><strong>Email - </strong>{{ doctorSpec.doctor.user.email }}</p>
+      <p><strong>Phone - </strong>{{ doctorSpec.doctor.user.phoneNumber }}</p>
+      <p><Strong>LincenseNumber - </Strong> {{ doctorSpec.doctor.licenseNumber }}</p>
+      <p><strong>Clinic Address - </strong> {{ doctorSpec.doctor.clinicAddress }}</p>
+      <p><strong>Years of Experience - </strong> {{ doctorSpec.doctor.yearsOfExperience }}</p>
+      <p><strong>Bio - </strong> {{ doctorSpec.doctor.bio }}</p>
+    </div>
+  </div>
+</div>

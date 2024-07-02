@@ -1,0 +1,139 @@
+.contact-page {
+    min-height: 75vh;
+    padding-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .contact-page p{
+    font-size: 40px;
+    font-weight: 900;
+    margin-bottom: 6px;
+    color: #102039;
+    line-height: 1.2;
+  }
+  
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    
+    width: 50%;
+    background-color: white;
+  }
+  
+  #contact {
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-top: 40px;
+    letter-spacing: 1.5px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .input-div {
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 50%;
+  }
+  
+  .input-divs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flexColumn .input-divs{
+    width: 100%;
+  }
+  .flexColumn .input-divs:nth-child(2){
+    margin-left: 20px;
+  }
+  
+  input, textarea {
+    padding: 5px 14px;
+    border: 2px solid #e4e4e4;
+    border-radius: 5px;
+    margin-top: 15px;
+    height: 40px;
+    color: #232323;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+  }
+  
+  textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 5px 14px;
+    height: 45px;
+    width: 30%;
+    background-color: #42b7ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.5s all;
+  }
+  
+  button:disabled {
+    background-color: #cccccc; /* Light gray */
+    color: #666666;
+  }
+  
+  button:hover:disabled {
+    background-color: #cccccc; /* Light gray */
+    color: #666666;
+  }
+  
+  button:hover {
+    background-color: #0ea2ff;
+  }
+  
+  @media (max-width: 1000px) {
+
+    .flexColumn {
+        display: flex;
+        flex-direction: column;
+    }
+    .flexColumn .input-divs:nth-child(2){
+        margin-left: 0;
+    }
+      
+  }
+  
+  @media (max-width: 700px) {
+    .contact-page {
+      padding-top: 7vh;
+      min-height: 60vh;
+      max-height: 80vh;
+    }
+    .contact-page p{
+      font-size: 30px;
+        font-weight: 500;
+    }
+    .contact-container {
+        width: 80%;
+    }
+
+
+      
+  }

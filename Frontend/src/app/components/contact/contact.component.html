@@ -1,0 +1,47 @@
+<div class="pageTitle">
+  <p>Contact Us</p>
+</div>
+<div class="contact-page">
+  <p>Get in touch</p>
+  <div class="contact-container">
+    <form #queryForm="ngForm" (ngSubmit)="postQuery()">
+      <div class="input-div">
+        <div class="input-divs">
+          <textarea  id="message" [(ngModel)]="query.queries" #queries="ngModel" name="queries" required
+            placeholder="Write your message here"></textarea>
+          <span *ngIf="queries.invalid && queries.touched" style="color: red;">
+            <span *ngIf="queries.errors?.['required']">Message is required.</span>
+          </span>
+        </div>
+
+        <div class="flexColumn">
+          <div class="input-divs">
+            <input type="email" id="email" [(ngModel)]="query.email" #email="ngModel" name="email" required
+              placeholder="pat@example.com">
+            <span *ngIf="email.invalid && email.touched" style="color: red;">
+              <span *ngIf="email.errors?.['required']">Email is required.</span>
+            </span>
+          </div>
+
+          <div class="input-divs">
+            <input type="text" id="name" [(ngModel)]="query.name" #name="ngModel" name="name" required
+              placeholder="Name">
+            <span *ngIf="name.invalid && name.touched" style="color: red;">
+              <span *ngIf="name.errors?.['required']">Name is required.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="input-divs">
+          <input type="text" id="subject" [(ngModel)]="query.subject" #subject="ngModel" name="subject" required
+            placeholder="Subject">
+          <span *ngIf="subject.invalid && subject.touched" style="color: red;">
+            <span *ngIf="subject.errors?.['required']">Subject is required.</span>
+          </span>
+        </div>
+      </div>
+
+      <button [disabled]="queryForm.invalid" type="submit">Submit</button>
+    </form>
+  </div>
+</div>

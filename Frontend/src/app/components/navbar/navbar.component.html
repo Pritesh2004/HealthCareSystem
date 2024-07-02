@@ -1,0 +1,50 @@
+<nav id="navbar">
+
+  <span *ngIf="!isAdmin && !isDoctor" routerLink="/" class="navbar-title">
+    <p id="title1">Health</p>
+    <p id="title2">Care</p>
+  </span>
+  <span  *ngIf="isDoctor" routerLink="/doctorDashboard"  class="navbar-title">
+    <p id="title1">Health</p>
+    <p id="title2">Care</p>
+  </span>
+  <span *ngIf="isAdmin" routerLink="/adminDashboard"  class="navbar-title">
+    <p id="title1">Health</p>
+    <p id="title2">Care</p>
+  </span>
+
+  <div class="navlinks" [class.menuClass]="menuVariable">
+
+    <div *ngIf="!isAdmin && !isDoctor" id="links">
+      <a class="navlink" routerLink="/">Home</a>
+      <a class="navlink" routerLink="/about">About</a>
+      <a class="navlink" routerLink="/doctors">Doctors</a>
+      <a class="navlink" routerLink="/contact">Contact</a>
+    </div>
+
+    <div id="buttons">
+      <button *ngIf="!isAdmin && !isDoctor" id="btn1" routerLink="/userDashboard">Book Appointment</button>
+      <ng-container *ngIf="isLoggedIn">
+        <button id="btn2" [matMenuTriggerFor]="userMenu">Account</button>
+      </ng-container>
+    </div>
+
+  </div>
+
+  <button (click)="openMenu()" id="menu-btn" mat-icon-button class="example-icon"
+    aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+</nav>
+
+<mat-menu id="matMenu" #userMenu="matMenu">
+  <button mat-menu-item *ngIf="isNormalUser" routerLink="/userProfile">Profile</button>
+  <button mat-menu-item *ngIf="isDoctor" routerLink="/doctorProfile">Profile</button>
+  <button mat-menu-item *ngIf="isAdmin" routerLink="/adminProfile">Profile</button>
+  <button mat-menu-item *ngIf="isNormalUser" routerLink="/userAppointments">My Appointments</button>
+  <button mat-menu-item *ngIf="isAdmin" routerLink="/addDoctor">Add Doctor</button>
+  <button mat-menu-item *ngIf="isAdmin" routerLink="/addSpecialization">Add Specializations</button>
+  <button mat-menu-item *ngIf="isDoctor" routerLink="/doctorAppointments">My Appointments</button>
+  <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>

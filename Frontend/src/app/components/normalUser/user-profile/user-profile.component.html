@@ -1,0 +1,71 @@
+<div class="content">
+  <div *ngIf="user && !update" class="profile-card">
+    <div class="logo-container">
+      <img src="./../../../../assets/user_149071.png" alt="Account Logo" class="account-logo">
+    </div>
+    <p id="name">{{ user.user.firstName }} {{ user.user.lastName }}</p>
+    <p id="addressN">Address{{ user.address }}</p>
+    <div class="div1">
+      <p><strong>Email - </strong>{{ user.user.email }}</p>
+      <p><strong>Phone - </strong>{{ user.user.phoneNumber }}</p>
+      <p><strong>Date Of Birth - </strong> {{ user.dateOfBirth | date }}</p>
+      <p><Strong>Gender - </Strong> {{ user.gender }}</p>
+    </div>
+    <button (click)="routeToFormAndProfile()">Complete / Update</button>
+  </div>
+
+  <div *ngIf="update" class="update-card">
+    <p id="update">Update Profile</p>
+
+    <form class="update-form" #updateForm="ngForm" (ngSubmit)="updateProfile()">
+
+
+      <!-- First Name and Last Name Fields in Row -->
+      <div class="input-row">
+        <!-- First Name Field -->
+          <input type="text" id="firstName" [(ngModel)]="userDto.firstName" #firstName="ngModel" name="firstName" required
+            minlength="2" maxlength="50" pattern="[a-zA-Z ]+" placeholder="First Name">
+
+        <!-- Last Name Field -->
+          <input type="text" id="lastName" [(ngModel)]="userDto.lastName" #lastName="ngModel" name="lastName" required
+            minlength="2" maxlength="50" pattern="[a-zA-Z ]+" placeholder="Last Name">
+
+      </div>
+
+      <div class="input-row">
+        <!-- Date of Birth Field -->
+          <input type="date" id="dateOfBirth" [(ngModel)]="userDto.dateOfBirth" #dateOfBirth="ngModel" name="dateOfBirth"
+            required placeholder="Date of Birth">
+
+        <!-- Phone Number Field -->
+          <input type="tel" id="phoneNumber" [(ngModel)]="userDto.phoneNumber" #phoneNumber="ngModel" name="phoneNumber"
+            required pattern="[0-9]{10}" placeholder="Phone Number">
+          <span *ngIf="phoneNumber.invalid && phoneNumber.touched" class="error-message" style="color: red;">
+            <span *ngIf="phoneNumber.errors?.['pattern']">Please enter a valid 10-digit phone number.</span>
+          </span>
+      </div>
+
+      <!-- Address Field -->
+      <div class="input-row">
+          <input type="text" id="address" [(ngModel)]="userDto.address" #address="ngModel" name="address" required
+            placeholder="Address">
+        
+        <!-- Gender Field -->
+          <select  id="gender" [(ngModel)]="userDto.gender" #gender="ngModel" name="gender" required>
+            <option  disabled selected>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="buttons">
+        <button [disabled]="updateForm.invalid" type="submit" >Update </button>
+        <button (click)="routeToFormAndProfile()"> Profile</button>
+      </div>
+    </form>
+
+  </div>
+
+</div>

@@ -1,0 +1,26 @@
+<div class="pageTitle">
+    <p>
+        Doctors
+    </p>
+</div>
+
+<div class="content">
+<p id="heading">Our Specialist</p>
+<div class="doctor-cards-container">
+    <div *ngFor="let doctorSpec of doctorSpecs" class="doctor-card">
+      <div class="doctor-image">
+        <img src="./../../../../assets/OQ6UTW0.jpg" alt="Doctor Image">
+      </div>
+      <div class="doctor-info">
+        <div class="flexColumn">
+            <h2>{{ doctorSpec.doctor.user.firstName }}</h2>
+            <h2>{{doctorSpec.doctor.user.lastName}}</h2>
+        </div>
+        
+        <p>{{ doctorSpec.specialization.specializationName }}</p>
+        <p>{{ doctorSpec.doctor.user.email }}</p>
+      </div>
+    </div>
+  </div>
+  
+  </div>

@@ -1,0 +1,78 @@
+<div class="content">
+
+  <div *ngIf="dataSource.data.length > 0; else noAppointments" class="appointments-container">
+    <h2>My Appointments</h2>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Doctor Name Column -->
+        <ng-container matColumnDef="doctorName">
+          <th mat-header-cell *matHeaderCellDef> Doctor Name </th>
+          <td mat-cell *matCellDef="let appointment"> {{appointment.doctor.user.firstName}}
+            {{appointment.doctor.user.lastName}} </td>
+        </ng-container>
+
+        <!-- User Name Column -->
+        <ng-container matColumnDef="userName">
+          <th mat-header-cell *matHeaderCellDef> User Name </th>
+          <td mat-cell *matCellDef="let appointment"> {{appointment.user.user.firstName}}
+            {{appointment.user.user.lastName}} </td>
+        </ng-container>
+
+        <!-- Appointment Date Column -->
+        <ng-container matColumnDef="appointmentDate">
+          <th mat-header-cell *matHeaderCellDef> Appointment Date </th>
+          <td mat-cell *matCellDef="let appointment"> {{appointment.appointmentDate | date}} </td>
+        </ng-container>
+
+        <!-- Appointment Time Column -->
+        <ng-container matColumnDef="appointmentTime">
+          <th mat-header-cell *matHeaderCellDef> Appointment Time </th>
+          <td mat-cell *matCellDef="let appointment"> {{appointment.appointmentTime}} </td>
+        </ng-container>
+
+        <!-- Booking Date Column -->
+        <ng-container matColumnDef="bookingDate">
+          <th mat-header-cell *matHeaderCellDef> Booking Date </th>
+          <td mat-cell *matCellDef="let appointment"> {{appointment.bookingDate | date}} </td>
+        </ng-container>
+
+        <!-- Reason Column -->
+        <ng-container matColumnDef="reason">
+          <th mat-header-cell *matHeaderCellDef> Reason </th>
+          <td mat-cell *matCellDef="let appointment"> {{appointment.reason}} </td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let appointment">
+            <ng-container *ngIf="appointment.status==='CANCELLED'">
+              <button mat-raised-button color="basic">CANCELLED</button>
+            </ng-container>
+            <ng-container *ngIf="appointment.status!=='CANCELLED' && appointment.status!=='REJECTED' ">
+              <div class="statusBtn">
+                <button mat-raised-button color="primary">{{appointment.status}}</button>
+                <button mat-raised-button color="accent"
+                  (click)="updateStatus(appointment.appointmentId, 'CANCELLED')">Cancel</button>
+              </div>
+
+            </ng-container>
+            <ng-container *ngIf="appointment.status==='REJECTED'">
+              <button mat-raised-button color="basic">REJECTED</button>
+            </ng-container>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+  <ng-template #noAppointments>
+<div class="noAppointments">
+  <p>No appointments found.</p>
+
+</div>
+  </ng-template>
+</div>

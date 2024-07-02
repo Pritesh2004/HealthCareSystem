@@ -1,0 +1,57 @@
+<div class="content">
+
+    <form class="register-form" (ngSubmit)="addDoctor()">
+        <h2>Add Doctor</h2>
+        <div class="form-row">
+           
+            <input type="password" id="password" placeholder="Enter password" [(ngModel)]="doctor.password"
+                name="password" required>
+
+            <input type="email" id="email" placeholder="Enter email" [(ngModel)]="doctor.email" name="email" required>
+              <input type="text" id="licenseNumber" placeholder="Enter License number" [(ngModel)]="doctor.licenseNumber"
+                name="licenseNumber">
+        </div>
+
+        <div class="form-row">
+
+            <input type="text" id="firstName" placeholder="Enter first name" [(ngModel)]="doctor.firstName"
+                name="firstName" required>
+
+
+            <input type="text" id="lastName" placeholder="Enter last name" [(ngModel)]="doctor.lastName" name="lastName"
+                required>
+
+
+            <input type="text" id="phoneNumber" placeholder="Enter phone number" [(ngModel)]="doctor.phoneNumber"
+                name="phoneNumber">
+        </div>
+
+        <div class="form-row">
+
+          
+
+
+            <input type="text" id="clinicAddress" placeholder="Enter clinic address" [(ngModel)]="doctor.clinicAddress"
+                name="clinicAddress">
+
+
+            <input type="text" id="bio" placeholder="Enter bio" [(ngModel)]="doctor.bio" name="bio">
+        </div>
+
+        <div class="form-row">
+
+            <input type="text" id="yearsOfExperience" placeholder="Enter years of experience"
+                [(ngModel)]="doctor.yearsOfExperience" name="yearsOfExperience">
+
+
+            <select id="specializationId" name="specializationId" [(ngModel)]="doctor.specializationId" required>
+                <option *ngFor="let specialization of specializations" [value]="specialization.specializationId">
+                    {{ specialization.specializationName }}
+                </option>
+            </select>
+        </div>
+
+        <button type="submit" class="submit-button">Register</button>
+    </form>
+
+</div>

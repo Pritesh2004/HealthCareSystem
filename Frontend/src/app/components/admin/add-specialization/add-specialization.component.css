@@ -1,0 +1,65 @@
+.content{
+  background-image: url("https://themewagon.github.io/medicalcenter/assets/img/hero/hero2.png");
+  height: 85vh;
+  padding-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-form{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 35vh;
+  width: 400px;
+}
+
+h2{
+  font-size: 25px;
+  font-weight: 700;
+
+}
+
+ input {
+  margin-top: 20px;
+  width: 80%;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+button {
+  margin-top: 20px;
+  background: #009DFF;
+  height: 44px;
+  width: 180px;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid transparent;
+  color: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+button:hover {
+  background: transparent;
+  color: #009DFF;
+  border: 1px solid #009DFF;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 550px) {
+  .example-form{
+    width: 80%;
+    
+  }
+  h2{
+    font-size: 22px;
+  }
+}

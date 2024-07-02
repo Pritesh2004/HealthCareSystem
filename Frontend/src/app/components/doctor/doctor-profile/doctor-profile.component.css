@@ -1,0 +1,160 @@
+.content {
+  padding-top: 20vh;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://themewagon.github.io/medicalcenter/assets/img/hero/hero2.png");
+}
+
+.profile-card {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 20px;
+  width: 55%;
+  height: 70vh;
+  margin-top: 20px;
+  background-color: white;
+
+}
+
+.buttons{
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+
+#name {
+  margin-top: 30px;
+  font-size: 35px;
+  font-weight: 600;
+  color: rgb(92, 92, 92);
+}
+
+#specialization {
+  margin-top: 3px;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgb(134, 134, 134);
+}
+
+.div1 {
+  margin-top: 20px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(134, 134, 134);
+  gap: 5px;
+}
+
+.account-logo {
+  height: 120px;
+  margin-top: -50%;
+}
+
+button {
+  margin-top: 20px;
+  background: #009DFF;
+  height: 44px;
+  width: 180px;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid transparent;
+  color: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+button:hover {
+  background: transparent;
+  color: #009DFF;
+  border: 1px solid #009DFF;
+  transition: all 0.3s ease;
+}
+
+
+
+@media (max-width: 1200px) {
+
+  .content{
+    height: 95vh;
+  }
+
+  .profile-card {
+    width: 65%;
+      height: 75vh;
+  }
+ 
+}
+
+@media (max-width: 800px) {
+  .profile-card {
+    width: 85%;
+  }
+  
+  .account-logo {
+      height: 120px;
+  }
+  .buttons{
+      width: 80%;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+      padding-top: 15vh;
+      height: 90vh;
+  }
+  .profile-card {
+    width: 80%;
+      padding: 0 5%;
+      height: 65vh;
+  }
+
+  
+#name {
+  margin-top: 30px;
+  font-size: 28px;
+}
+
+#specialization {
+  margin-top: 0;
+}
+
+.div1 {
+  margin-top: 10px;
+  width: 90%;
+  
+  font-size: 15px;
+  gap: 2px;
+}
+  .account-logo {
+      height: 100px;
+  }
+
+    .buttons{
+  margin-top: 5px;  
+  width: 70%;
+  }
+}
+
+@media (max-width: 600px) {
+  .div1 {
+    width: 95%;
+  }
+  .profile-card {
+      height: 70vh;
+  }
+}

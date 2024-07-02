@@ -1,0 +1,134 @@
+#welcome
+{
+    height: 100vh;
+    overflow: hidden;
+    background-image: url("https://themewagon.github.io/medicalcenter/assets/img/hero/h1_hero.png");
+}
+#welcomeTitle{
+    padding-top: 17%;
+    padding-left: 10%;
+    width: 100%;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#welcomeTitle p {
+    font-family: Arial, sans-serif;
+    
+}
+
+#welcomeTitle p:first-of-type {
+    font-size: 70px;
+    font-weight: 900;
+    margin-bottom: 6px;
+    color: #102039;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+#welcomeTitle p:nth-of-type(2) {
+    font-size: 55px;
+    font-weight: 400;
+    margin-bottom: 6px;
+    color: #102039;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+#welcomeTitle p:last-of-type {
+    font-size: 18px;
+    font-weight: 400;
+    padding-right: 40%;
+    color: #727272;
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+
+#welcomeTitle button {
+    background: #009DFF;
+    height: 60px;
+    width: 220px;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid transparent;
+    color: #fff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+#welcomeTitle button:hover{
+    background: transparent;
+    color: #009DFF;
+    border: 1px solid #009DFF;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 1000px) {
+    #welcomeTitle{
+        padding-top: 30%;
+        padding-left: 10%;
+        width: 100%;
+    }
+  }
+
+  @media (max-width: 700px) {
+
+    #welcomeTitle{
+        padding-top: 40%;
+    }
+
+    #welcomeTitle p:first-of-type {
+        font-size:55px;
+    }
+
+    #welcomeTitle p:nth-of-type(2) {
+        font-size: 40px;
+        margin-bottom: 3px;
+    }
+    
+    #welcomeTitle p:last-of-type {
+        font-size: 16px;
+        margin-bottom: 25px;
+        padding-right: 30%;
+
+    }
+    
+    #welcomeTitle button {
+        height: 50px;
+        width: 200px; 
+    }
+    
+  }
+
+  @media (max-width: 550px) {
+
+    #welcomeTitle{
+        padding-top: 50%;
+    }
+
+    #welcomeTitle p:first-of-type {
+        font-size:38px;
+        font-weight: 600;
+    }
+
+    #welcomeTitle p:nth-of-type(2) {
+        font-size: 28px;
+        margin-bottom: 3px;
+    }
+    
+    #welcomeTitle p:last-of-type {
+        font-size: 14px;
+        margin-bottom: 25px;
+        padding-right: 20%;
+
+    }
+    
+    #welcomeTitle button {
+        height: 40px;
+        width: 180px; 
+    }
+    
+  }

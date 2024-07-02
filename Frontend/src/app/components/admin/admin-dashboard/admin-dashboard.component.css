@@ -1,0 +1,14 @@
+.content {
+    padding-top: 15vh;
+    height: 85vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://themewagon.github.io/medicalcenter/assets/img/hero/hero2.png");
+  }
+
+  h2{
+    font-size: 35px;
+    font-weight: 800;
+  }

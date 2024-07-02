@@ -1,0 +1,45 @@
+<div class="appointment-page">
+  <div class="appointment-container">
+    <p id="appointment-heading">BOOK APPOINTMENT</p>
+    <form #appointmentForm="ngForm" (ngSubmit)="bookAppointment()" class="appointment-form">
+      
+      <div class="input-div">
+        <div class="input-divs">
+          <select  id="doctor_id" name="doctor_id" [(ngModel)]="appointment.doctor_id" class="appointment-input" required>
+            
+            <option *ngFor="let doctorSpec of doctorSpecs" [value]="doctorSpec.doctor.userId">
+              {{ doctorSpec.doctor.user.firstName }} {{ doctorSpec.doctor.user.lastName }} - {{ doctorSpec.specialization.specializationName }}
+            </option>
+          </select>
+        </div>
+      </div>
+      
+
+      <!-- Appointment Date Field -->
+      <div class="input-div">
+        <div class="input-divs">
+          <input type="date" id="appointmentDate" name="appointmentDate" [(ngModel)]="appointment.appointmentDate" required class="appointment-input" placeholder="Appointment Date">
+        </div>
+      </div>
+
+      <!-- Appointment Time Field -->
+      <div class="input-div">
+        <div class="input-divs">
+          <input type="time" id="appointmentTime" name="appointmentTime" [(ngModel)]="appointment.appointmentTime" required class="appointment-input" placeholder="Appointment Time">
+        </div>
+      </div>
+
+
+      <!-- Reason Field -->
+      <div class="input-div">
+        <div class="input-divs">
+          <textarea id="reason" name="reason" [(ngModel)]="appointment.reason" class="appointment-input" placeholder="Reason" required  rows="3"></textarea>
+        </div>
+      </div>
+
+
+      <button type="submit" [disabled]="appointmentForm.invalid" class="appointment-button">Book Appointment</button>
+      
+    </form>
+  </div>
+</div>
