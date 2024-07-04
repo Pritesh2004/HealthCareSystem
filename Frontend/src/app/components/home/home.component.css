@@ -107,7 +107,7 @@
 
     #welcome
 {
-    height: 80vh;
+    height: 85vh !important;
 }
 
     #welcomeTitle{

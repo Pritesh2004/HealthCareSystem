@@ -80,8 +80,6 @@ export class SignupComponent {
             this.router.navigate(['login'])
           }
       });
-        
-
         // Add any additional handling or redirection logic here
       },
       error => {

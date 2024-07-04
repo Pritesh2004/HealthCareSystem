@@ -1,4 +1,3 @@
-
 <div class="signup-page">
   <div *ngIf="!otpSent" class="signup-container">
     <p id="signup">Signup</p>
@@ -12,7 +11,7 @@
         <!-- Email Field -->
         <div class="input-div">
           <input type="email" id="email" [(ngModel)]="user.email" #email="ngModel" name="email" required
-            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" placeholder="Email" >
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" placeholder="Email">
           <span *ngIf="email.invalid && email.touched" class="error-message" style="color: red;">
             <span *ngIf="email.errors?.['required']">Email is required.</span>
             <span *ngIf="email.errors?.['pattern']">Please enter a valid email address.</span>
@@ -33,8 +32,8 @@
             <span *ngIf="firstName.errors?.['pattern']">First Name can only contain letters and spaces.</span>
           </span>
         </div>
-        </div>
-        <div class="input-row">
+      </div>
+      <div class="input-row">
 
         <!-- Last Name Field -->
         <div class="input-div">
@@ -64,31 +63,32 @@
               lowercase letter, and one number.</span>
           </span>
         </div>
-        </div>
+      </div>
 
 
 
 
-        <button [disabled]="signupForm.invalid" type="submit">Register</button>
+      <button [disabled]="signupForm.invalid" type="submit">Register</button>
 
-        <div id="login-link-div">
-          <p id="login-text">Already have an account?</p>
-          <a routerLink="/login" id="login-link">Login</a>
-        </div>
+      <div id="login-link-div">
+        <p id="login-text">Already have an account?</p>
+        <a routerLink="/login" id="login-link">Login</a>
+      </div>
     </form>
   </div>
 
-  <div *ngIf="otpSent">
+  <div *ngIf="otpSent" id="otp-div">
     <mat-card class="otp-card">
-    <form class="otp-div" #otpForm="ngForm" (submit)="verifyOtp(formOtp.fOtp)">
-      <p id="otp-heading">OTP Authentication</p>
-      <input id="otp-input" type="text" [(ngModel)]="formOtp.fOtp" #fOtp="ngModel" name="fOtp" required placeholder="Enter OTP">
-      <div class="otp-buttons">
-        <button id="otp-btn" type="submit">Verify OTP</button>
-      <button id="try-btn" (click)="toSignup()">Try again</button>
-      </div>
-      
-    </form>
-  </mat-card>
+      <form class="otp-div" #otpForm="ngForm" (submit)="verifyOtp(formOtp.fOtp)">
+        <p id="otp-heading">OTP Authentication</p>
+        <input id="otp-input" type="text" [(ngModel)]="formOtp.fOtp" #fOtp="ngModel" name="fOtp" required
+          placeholder="Enter OTP">
+        <div class="otp-buttons">
+          <button id="otp-btn" type="submit">Verify OTP</button>
+          <button id="try-btn" (click)="toSignup()">Try again</button>
+        </div>
+
+      </form>
+    </mat-card>
   </div>
 </div>

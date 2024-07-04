@@ -16,7 +16,8 @@
     align-items: center;
     border-radius: 5px;
     width: 45%;
-    height: 65vh;
+    min-height: 65vh;
+    max-height: 80vh;
     margin-top: 20px;
     background-color: white;
 
@@ -28,8 +29,8 @@
     flex-direction: column;
     align-items: center;
     width: 45%;
-    min-height: 70%;
-    max-height: 80%;
+    min-height: 65vh;
+    max-height: 70vh;
     border: 1px solid white;
     border-radius: 5px;
     background-color: white;
@@ -158,7 +159,8 @@ button:hover {
 @media (max-width: 800px) {
     .profile-card {
         width: 80%;
-        height: 60vh;
+        min-height: 60vh;
+        padding: 0 20px;
     }
     .update-card{
         width: 80%;
@@ -177,8 +179,8 @@ button:hover {
         height: 90vh;
     }
     .profile-card {
-        padding: 0 5%;
-        height: 55vh;
+        min-height: 60vh;
+        max-height: 70vh;
     }
 
     .account-logo {

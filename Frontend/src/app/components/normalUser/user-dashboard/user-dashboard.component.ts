@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AppointmentService } from 'src/app/service/appointment.service';
 import { DoctorService } from 'src/app/service/doctor.service';
@@ -23,7 +24,7 @@ export class UserDashboardComponent implements OnInit {
   }
 
 
-  constructor(private router : Router,private doctorService: DoctorService, private appointmentService: AppointmentService) { }
+  constructor(private snack : MatSnackBar ,private router : Router,private doctorService: DoctorService, private appointmentService: AppointmentService) { }
 
   ngOnInit(): void {
     this.getAllDoctorSpec();
@@ -77,6 +78,13 @@ export class UserDashboardComponent implements OnInit {
       },
       error => {
         console.log(error);
+        const snackBarRef = this.snack.open("Error Booking Appointment..", 'ok', {
+          verticalPosition: 'top'
+        });
+      
+        snackBarRef.onAction().subscribe(() => {
+          window.location.reload();
+        });
       }
     );
 

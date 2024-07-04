@@ -1,5 +1,8 @@
 .content{
-    padding : 24vh 5%;
+  padding: 0 10%;
+    padding-top: 25vh ;
+    min-height:80vh;
+    max-height: 100vh;
 }
 .noAppointments{
   display: flex;
@@ -76,7 +79,9 @@ font-weight: 700;
   @media (max-width: 900px) {
 
     .content{
-      padding: 20vh 8%;
+      padding: 0 8%;
+      padding-top: 20vh;
+
     }
 
     th, td {

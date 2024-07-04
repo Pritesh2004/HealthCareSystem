@@ -6,7 +6,7 @@
       <div class="input-div">
         <div class="input-divs">
           <select  id="doctor_id" name="doctor_id" [(ngModel)]="appointment.doctor_id" class="appointment-input" required>
-            
+
             <option *ngFor="let doctorSpec of doctorSpecs" [value]="doctorSpec.doctor.userId">
               {{ doctorSpec.doctor.user.firstName }} {{ doctorSpec.doctor.user.lastName }} - {{ doctorSpec.specialization.specializationName }}
             </option>
@@ -25,7 +25,15 @@
       <!-- Appointment Time Field -->
       <div class="input-div">
         <div class="input-divs">
-          <input type="time" id="appointmentTime" name="appointmentTime" [(ngModel)]="appointment.appointmentTime" required class="appointment-input" placeholder="Appointment Time">
+          <select  id="appointmentTime" name="appointmentTime" [(ngModel)]="appointment.appointmentTime" required
+            class="appointment-input">
+            <option value="" disabled>Time</option>
+            <option value="10:00 AM">10 AM</option>
+            <option value="12:00 PM">12 PM</option>
+            <option value="02:00 PM">2 PM</option>
+            <option value="04:00 PM">4 PM</option>
+            <option value="06:00 PM">6 PM</option>
+          </select>
         </div>
       </div>
 
