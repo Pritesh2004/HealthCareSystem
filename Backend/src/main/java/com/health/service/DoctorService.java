@@ -42,8 +42,8 @@ public class DoctorService {
         try {
         	
         	User exist = userService.findUserByEmail(dto.getEmail());
-        	System.out.println(exist.toString());
             if (exist != null) {
+            	System.out.println(exist.toString());
                 throw new UserNotFoundException("User already present with email: " + dto.getEmail());
             }
             

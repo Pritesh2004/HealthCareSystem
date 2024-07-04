@@ -48,6 +48,7 @@ public class AdminController {
     @PostMapping("/saveDoctor")
     public ResponseEntity<?> saveDoctor(@RequestBody DoctorDto dto) {
         try {
+        	System.out.println(dto.toString());
             Doctor doctor = doctorService.saveDoctor(dto);
             return new ResponseEntity<>(doctor, HttpStatus.CREATED);
         } catch (Exception e) {
