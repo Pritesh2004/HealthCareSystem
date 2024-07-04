@@ -8,7 +8,7 @@ import { LoginService } from './login.service';
 })
 export class NormalUserService {
 
-  private baseUrl = 'http://localhost:8181'; //Spring boot url
+  private baseUrl = 'https://healthcare-backend-jsrk.onrender.com'; //Spring boot url
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 

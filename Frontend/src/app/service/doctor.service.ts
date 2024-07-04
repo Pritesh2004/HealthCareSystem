@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class DoctorService {
 
 
-  private baseUrl = 'http://localhost:8181/doctor'; // Spring Boot URL
+  private baseUrl = 'https://healthcare-backend-jsrk.onrender.com/doctor'; // Spring Boot URL
 
 
   constructor(private http: HttpClient, private loginService : LoginService) { }

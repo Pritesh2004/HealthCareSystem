@@ -9,7 +9,7 @@ export class LoginService {
 
   public loginStatusSubject = new Subject<boolean>();
 
-  private baseUrl = 'http://localhost:8181'; // Spring Boot URL
+  private baseUrl = 'https://healthcare-backend-jsrk.onrender.com'; // Spring Boot URL
 
   constructor(private http: HttpClient) { }
 

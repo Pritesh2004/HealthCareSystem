@@ -8,7 +8,7 @@ import { LoginService } from './login.service';
 })
 export class AppointmentService {
 
-  private baseUrl = 'http://localhost:8181/appointment'; // Spring Boot URL
+  private baseUrl = 'https://healthcare-backend-jsrk.onrender.com/appointment'; // Spring Boot URL
 
 
   constructor(private http: HttpClient, private loginService : LoginService) { }
