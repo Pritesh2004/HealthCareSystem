@@ -1,5 +1,6 @@
 package com.health.dto;
 
+
 public class DoctorDto {
 
     private String password;
@@ -12,6 +13,7 @@ public class DoctorDto {
     private int yearsOfExperience;
     private String bio;
     private Long specializationId;
+    
     
     
 	public DoctorDto() {

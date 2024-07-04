@@ -3,12 +3,14 @@ package com.health.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.health.dto.Role;
 import com.health.entity.Admin;
 import com.health.entity.Specialization;
 import com.health.entity.User;
+import com.health.helper.UserNotFoundException;
 import com.health.repository.AdminRepository;
 import com.health.repository.SpecializationRepository;
 
@@ -17,25 +19,27 @@ public class AdminService {
 
     @Autowired
     private AdminRepository adminRepository;
+    
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private SpecializationRepository specializationRepository;
 
-    @Autowired
-    private UserService userService;
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
+   
     public Admin saveAdmin(Admin admin) throws Exception {
     	
-        // Set role for the user associated with admin
+    	User exist = userService.findUserByEmail(admin.getUser().getEmail());
+        if (exist != null) {
+            throw new UserNotFoundException("User already present with email: " + admin.getUser().getEmail());
+        }
+    	
         admin.getUser().setRole(Role.ADMIN);
+        
+        admin.getUser().setPassword(encoder.encode(admin.getUser().getPassword()));
 
-        // Save the user details and get the saved entity
-        User savedUser = userService.saveUser(admin.getUser());
-
-        // Set the saved user to the admin entity
-        admin.setUser(savedUser);
-
-        // Save the admin entity and return the saved instance
         return adminRepository.save(admin);
     }
 

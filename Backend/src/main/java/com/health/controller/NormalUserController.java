@@ -16,10 +16,13 @@ import com.health.dto.NormalUserDto;
 import com.health.dto.SignupDto;
 import com.health.dto.VerifyEmailDto;
 import com.health.entity.NormalUser;
+import com.health.entity.User;
 import com.health.entity.UserQuery;
+import com.health.helper.UserFoundException;
 import com.health.helper.UserNotFoundException;
 import com.health.service.EmailSenderService;
 import com.health.service.NormalUserService;
+import com.health.service.UserService;
 
 @RestController
 @RequestMapping("user")
@@ -28,6 +31,9 @@ public class NormalUserController {
 	
 	@Autowired
 	private NormalUserService userService;
+	
+	@Autowired
+	private UserService service;
 	
 	@Autowired
 	private EmailSenderService emailService;
@@ -46,8 +52,17 @@ public class NormalUserController {
 	
 	@PostMapping("/verify-otp")
 	public ResponseEntity<String> verifyOTP(@RequestBody VerifyEmailDto mailDto) {
-	    emailService.sendEmail(mailDto.getEmail(), "Verify Your Email", "Otp for Email Verification is " + mailDto.getOtp());
-	       return ResponseEntity.ok("OTP Sent successfully.");
+		try {
+			User user = service.findUserByEmail(mailDto.getEmail());
+			 if (user != null) {
+	             throw new UserFoundException("User already present with email: " + mailDto.getEmail());
+	         }
+		    emailService.sendEmail(mailDto.getEmail(), "Verify Your Email", "Otp for Email Verification is " + mailDto.getOtp());
+		       return ResponseEntity.ok("OTP Sent successfully.");
+		}catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+
+		}
 	}
 	
 	@GetMapping("/getUser/{email}")

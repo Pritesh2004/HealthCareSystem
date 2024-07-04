@@ -7,13 +7,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.health.dto.Role;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -48,6 +47,15 @@ public class User implements UserDetails {
     private String phoneNumber;
 
     private Role role;
+    
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private NormalUser normalUser;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Doctor doctor;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Admin admin;
 
     
 	public User(Long userId, String password, String email, String firstName, String lastName,

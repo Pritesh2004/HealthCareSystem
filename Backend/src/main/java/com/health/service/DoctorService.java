@@ -2,8 +2,10 @@ package com.health.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.health.dto.DoctorDto;
@@ -13,6 +15,7 @@ import com.health.entity.DoctorSpecialization;
 import com.health.entity.Specialization;
 import com.health.entity.User;
 import com.health.helper.DoctorServiceException;
+import com.health.helper.UserNotFoundException;
 import com.health.repository.DoctorRepository;
 import com.health.repository.DoctorSpecializationRepository;
 import com.health.repository.SpecializationRepository;
@@ -31,55 +34,52 @@ public class DoctorService {
 
     @Autowired
     private DoctorSpecializationRepository doctorSpecializationRepository;
+    
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
 
     public Doctor saveDoctor(DoctorDto dto) throws DoctorServiceException {
         try {
-            User user = createUserFromDto(dto);
-            User savedUser = userService.saveUser(user);
+        	
+        	User exist = userService.findUserByEmail(dto.getEmail());
+        	System.out.println(exist.toString());
+            if (exist != null) {
+                throw new UserNotFoundException("User already present with email: " + dto.getEmail());
+            }
+            
+        	//set user
+        	User user  = new User();
+        	user.setEmail(dto.getEmail());
+            user.setPassword(encoder.encode(dto.getPassword()));
+        	user.setFirstName(dto.getFirstName());
+        	user.setLastName(dto.getLastName());
+        	user.setPhoneNumber(dto.getPhoneNumber());
+        	user.setRole(Role.DOCTOR);
+        	
+        	//set doctor
+        	Doctor doctor = new Doctor();
+        	doctor.setBio(dto.getBio());
+        	doctor.setClinicAddress(dto.getClinicAddress());
+        	doctor.setLicenseNumber(dto.getLicenseNumber());
+        	doctor.setYearsOfExperience(dto.getYearsOfExperience());
+        	doctor.setUser(user);
+        	
+        	//get specialization
+        	Specialization specialization =  specializationRepository.findById(dto.getSpecializationId())
+            .orElseThrow(() -> new RuntimeException("Specialization not found with ID: " + dto.getSpecializationId()));
+        	
+        	//set DoctorSpecialization
+        	DoctorSpecialization doctorSpecialization = new DoctorSpecialization();
+            doctorSpecialization.setDoctor(doctor);
+            doctorSpecialization.setSpecialization(specialization);
+            
+            doctor.setDoctorSpecializations(Set.of(doctorSpecialization));
 
-            Doctor doctor = createDoctorFromDto(dto, savedUser);
-            Doctor savedDoctor = doctorRepository.save(doctor);
-
-            Specialization specialization = findSpecialization(dto.getSpecializationId());
-            saveDoctorSpecialization(savedDoctor, specialization);
-
-            return savedDoctor;
+            return doctorRepository.save(doctor);
+            
         } catch (Exception e) {
             throw new DoctorServiceException("Error saving doctor: " + e.getMessage(), e);
         }
-    }
-
-    private User createUserFromDto(DoctorDto dto) {
-        User user = new User();
-        user.setPassword(dto.getPassword());
-        user.setEmail(dto.getEmail());
-        user.setFirstName(dto.getFirstName());
-        user.setLastName(dto.getLastName());
-        user.setPhoneNumber(dto.getPhoneNumber());
-        user.setRole(Role.DOCTOR);
-        return user;
-    }
-
-    private Doctor createDoctorFromDto(DoctorDto dto, User savedUser) {
-        Doctor doctor = new Doctor();
-        doctor.setUser(savedUser);
-        doctor.setLicenseNumber(dto.getLicenseNumber());
-        doctor.setClinicAddress(dto.getClinicAddress());
-        doctor.setYearsOfExperience(dto.getYearsOfExperience());
-        doctor.setBio(dto.getBio());
-        return doctor;
-    }
-
-    private Specialization findSpecialization(Long specializationId) {
-        return specializationRepository.findById(specializationId)
-                .orElseThrow(() -> new RuntimeException("Specialization not found with ID: " + specializationId));
-    }
-
-    private void saveDoctorSpecialization(Doctor doctor, Specialization specialization) {
-        DoctorSpecialization doctorSpecialization = new DoctorSpecialization();
-        doctorSpecialization.setDoctor(doctor);
-        doctorSpecialization.setSpecialization(specialization);
-        doctorSpecializationRepository.save(doctorSpecialization);
     }
 
     public Doctor getDoctor(Long userId) {

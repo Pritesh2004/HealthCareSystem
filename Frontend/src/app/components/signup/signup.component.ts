@@ -34,6 +34,7 @@ export class SignupComponent {
 
   toSignup(){
     this.otpSent = !this.otpSent;
+    window.location.reload();
   }
 
   generateOTP(): void {

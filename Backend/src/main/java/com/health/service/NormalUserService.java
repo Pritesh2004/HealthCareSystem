@@ -1,13 +1,16 @@
 package com.health.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.health.dto.NormalUserDto;
 import com.health.dto.Role;
+import com.health.dto.VerifyEmailDto;
 import com.health.entity.NormalUser;
 import com.health.entity.User;
 import com.health.entity.UserQuery;
+import com.health.helper.UserFoundException;
 import com.health.helper.UserNotFoundException;
 import com.health.repository.NormalUserRepository;
 import com.health.repository.UserQueryRepository;
@@ -30,30 +33,34 @@ public class NormalUserService {
     
     @Autowired
     private EmailSenderService emailService;
+    
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
 
     public NormalUser saveNormalUser(NormalUser normalUser) {
         try {
-            // Set role for the user associated with normal user
+        	
+        	  User exist = userService.findUserByEmail(normalUser.getUser().getEmail());
+        	  System.out.println(exist.toString());
+              if (exist != null) {
+                  throw new UserFoundException("User already present with email: " + normalUser.getUser().getEmail());
+              }
+        	
             normalUser.getUser().setRole(Role.NORMAL);
 
-            // Save the user details and get the saved entity
-            User savedUser = userService.saveUser(normalUser.getUser());
+            normalUser.getUser().setPassword(encoder.encode(normalUser.getUser().getPassword()));
 
-            // Set the saved user to the normal user entity
-            normalUser.setUser(savedUser);
+            NormalUser savedNormalUser = normalUserRepository.save(normalUser);
 
-            // Send registration email
-            sendRegistrationEmail(savedUser);
+            sendRegistrationEmail(savedNormalUser.getUser());
 
-            // Save the normal user entity and return the saved instance
-            return normalUserRepository.save(normalUser);
+            return savedNormalUser;
         } catch (Exception e) {
             System.err.println("Error saving normal user: " + e.getMessage());
             e.printStackTrace();            
             throw new RuntimeException("Failed to save normal user", e);
         }
     }
-
     
     private void sendRegistrationEmail(User user) {
         String registrationEmailBody = buildRegistrationEmailBody(user);
@@ -75,7 +82,7 @@ public class NormalUserService {
     
     public NormalUser getUser(String email) {
         try {
-            User user = userService.findUserByUsername(email);
+            User user = userService.findUserByEmail(email);
             return normalUserRepository.findById(user.getUserId())
                     .orElseThrow(() -> new IllegalArgumentException("NormalUser not found for : " + email));
         } catch (Exception e) {
@@ -86,7 +93,7 @@ public class NormalUserService {
 
     public NormalUser updateUser(String email, NormalUserDto dto) throws UserNotFoundException {
     	
-        User user = userService.findUserByUsername(email);
+        User user = userService.findUserByEmail(email);
         if (user == null) {
             throw new UserNotFoundException("User not found with username: " + email);
         }
@@ -102,9 +109,6 @@ public class NormalUserService {
         normalUser.setAddress(dto.getAddress());
         normalUser.setDateOfBirth(dto.getDateOfBirth());
         normalUser.setGender(dto.getGender());
-        
-        // Update the user details
-        userRepository.save(user);
         
         // Save the normal user details
         normalUserRepository.save(normalUser);
