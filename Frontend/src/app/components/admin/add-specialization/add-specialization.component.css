@@ -10,7 +10,7 @@
 
 .example-form{
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,8 +55,12 @@ button:hover {
 }
 
 @media (max-width: 550px) {
+  .content{
+    height: 80vh;
+    padding-top: 5vh;
+  }
   .example-form{
-    width: 80%;
+    width: 90%;
     
   }
   h2{

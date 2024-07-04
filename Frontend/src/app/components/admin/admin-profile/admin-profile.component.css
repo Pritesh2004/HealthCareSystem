@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 5px;
     width: 35%;
     height: 50vh;
     margin-top: 20px;
@@ -109,12 +109,12 @@ button:hover {
 
 @media (max-width: 500px) {
     .content {
-        padding-top: 10vh;
-        height: 90vh;
+        padding-top: 8vh;
+        height: 80vh;
     }
     .profile-card {
         padding: 0 5%;
-        width: 70%;
+        width: 80%;
         height: 44vh;
     }
 

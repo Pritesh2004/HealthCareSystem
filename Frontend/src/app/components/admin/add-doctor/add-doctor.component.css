@@ -15,7 +15,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 700px;
   height: 68vh;
   max-height: 100vh;
@@ -38,9 +38,6 @@ h2{
   gap: 15px;
   margin-bottom: 15px;
 }
-
-
-
 
 
 input,  select {
@@ -87,7 +84,7 @@ button:hover {
   }
  
   .register-form {
-    width: 88%;
+    width: 90%;
     height: 95vh;
   }
 

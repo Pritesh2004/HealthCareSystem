@@ -74,6 +74,8 @@
   
   @media (max-width: 900px) {
 
+  
+
     .appointments-container{
         width: 100%;
 
@@ -97,6 +99,10 @@
   }
   
   @media (max-width: 600px) {
+    .content {
+      padding-top: 20vh;
+      height: 60vh;
+    }
     .appointments-container{
         margin-top: 10px;
     }
