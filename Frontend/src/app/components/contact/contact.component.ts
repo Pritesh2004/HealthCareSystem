@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NormalUserService } from 'src/app/service/normal-user.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { NormalUserService } from 'src/app/service/normal-user.service';
 })
 export class ContactComponent {
 
-  constructor(private userService: NormalUserService){}
+  constructor(private userService: NormalUserService, private snack : MatSnackBar){}
 
   public query={
     email : '',
@@ -20,10 +21,22 @@ export class ContactComponent {
     this.userService.postQueries(this.query).subscribe(
       data=>{
         console.log(data);
-        alert("Query posted successfully")
-      },
+        const snackBarRef = this.snack.open("Message Sent Successfully..", 'ok', {
+          verticalPosition: 'top'
+        });
+      
+        snackBarRef.onAction().subscribe(() => {
+          window.location.reload();
+        });      },
       error=>{
         console.log(error);
+        const snackBarRef = this.snack.open("Enter correct email..", 'ok', {
+          verticalPosition: 'top'
+        });
+      
+        snackBarRef.onAction().subscribe(() => {
+          window.location.reload();
+        });
       }
     )
   }
