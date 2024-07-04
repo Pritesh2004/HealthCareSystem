@@ -41,8 +41,8 @@ public class NormalUserService {
         try {
         	
         	  User exist = userService.findUserByEmail(normalUser.getUser().getEmail());
-        	  System.out.println(exist.toString());
               if (exist != null) {
+            	  System.out.println(exist.toString());
                   throw new UserFoundException("User already present with email: " + normalUser.getUser().getEmail());
               }
         	
