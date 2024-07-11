@@ -35,4 +35,4 @@ The Health Care System project is an intuitive and secure online platform develo
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/health-care-system.git
+   git clone https://github.com/Pritesh2004/HealthCareSystem.git
