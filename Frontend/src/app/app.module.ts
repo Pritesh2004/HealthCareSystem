@@ -70,9 +70,9 @@ import { AboutComponent } from './components/about/about.component';
     HttpClientModule,
     NgxUiLoaderModule,
     MatIconModule,
-    NgxUiLoaderHttpModule.forRoot({
-      showForeground:true
-    }),
+    // NgxUiLoaderHttpModule.forRoot({
+    //   showForeground:true
+    // }),
     MatProgressSpinnerModule,
     FormsModule,
     MatInputModule,

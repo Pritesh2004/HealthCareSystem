@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
+import { NgxUiLoaderService } from "ngx-ui-loader"; // Import NgxUiLoaderService
 
 @Component({
   selector: 'app-login',
@@ -16,12 +17,14 @@ export class LoginComponent {
   };
 
 
-  constructor(private loginService: LoginService, private router:Router, private snack: MatSnackBar){}
+  constructor(private loginService: LoginService, private router:Router, private snack: MatSnackBar, private ngxService: NgxUiLoaderService){}
 
   loginUser(){
+    this.ngxService.start();
     this.loginService.generateToken(this.userRequest).subscribe(
 
       (response :any)=>{
+        this.ngxService.stop();
         console.log("Token generated successfully");
         console.log("Token", response);
 

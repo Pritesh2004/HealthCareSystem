@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NormalUserService } from 'src/app/service/normal-user.service';
+import { NgxUiLoaderService } from "ngx-ui-loader"; // Import NgxUiLoaderService
+
 
 @Component({
   selector: 'app-contact',
@@ -9,7 +11,7 @@ import { NormalUserService } from 'src/app/service/normal-user.service';
 })
 export class ContactComponent {
 
-  constructor(private userService: NormalUserService, private snack : MatSnackBar){}
+  constructor(private userService: NormalUserService, private snack : MatSnackBar, private ngxService: NgxUiLoaderService){}
 
   public query={
     email : '',
@@ -18,9 +20,12 @@ export class ContactComponent {
     subject: ''
   }
   postQuery(){
+    this.ngxService.start();
+
     this.userService.postQueries(this.query).subscribe(
       data=>{
         console.log(data);
+        this.ngxService.stop();
         const snackBarRef = this.snack.open("Message Sent Successfully..", 'ok', {
           verticalPosition: 'top'
         });

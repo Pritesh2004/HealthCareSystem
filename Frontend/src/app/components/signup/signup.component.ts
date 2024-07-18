@@ -3,6 +3,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { NormalUserService } from 'src/app/service/normal-user.service';
 import Swal from 'sweetalert2';
+import { NgxUiLoaderService } from "ngx-ui-loader"; // Import NgxUiLoaderService
+
 
 @Component({
   selector: 'app-signup',
@@ -26,7 +28,7 @@ export class SignupComponent {
   otp: string = '';
   otpSent: boolean = false;
 
-  constructor(private userService: NormalUserService, private router: Router, private snack: MatSnackBar) {}
+  constructor(private userService: NormalUserService, private router: Router, private snack: MatSnackBar, private ngxService: NgxUiLoaderService) {}
 
   ngOnInit(): void {
     this.generateOTP();
@@ -46,8 +48,11 @@ export class SignupComponent {
   }
   
   sendOTP(email: string): void {
+    this.ngxService.start();
     this.userService.sendOTP(email, this.otp).subscribe(
       response => {
+        this.ngxService.stop();
+
         this.snack.open('Check your mail for OTP', 'OK', { verticalPosition: 'top' });
         this.otpSent = true;
       },
@@ -67,8 +72,10 @@ export class SignupComponent {
   }
 
   signupUser(): void {
+    this.ngxService.start();
     this.userService.registerUser(this.user).subscribe(
       response => {
+        this.ngxService.stop();
         console.log('User registered successfully:', response);
         Swal.fire({
           title: "User registered successfully",
